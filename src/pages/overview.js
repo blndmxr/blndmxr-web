@@ -8,7 +8,7 @@ import { Row, Col } from 'reactstrap';
 const LoadCoins = () => { 
 
     const [coins, setCoins] = useState(undefined)
-    const getData = () => fetch(`https://testnet.blindmixer.dev`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
+    const getData = () => fetch(`https://testnet.blindmixer.com`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
     
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const LoadCoins = () => {
             There are exactly 32 different coins in blindmixer, each having a different <strong>magnitude</strong>
         </p>
         <p>
-            Here is an example from our testnet custodian: (https://testnet.blindmixer.dev)
+            Here is an example from our testnet custodian: (https://testnet.blindmixer.com)
         </p>
         <table>
             <thead>

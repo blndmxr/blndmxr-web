@@ -38,8 +38,8 @@ const ReleasesHero = () =>  {
                         <p >Windows (.exe): </p>
                         <p>release: v1.0.0</p>
                     </div>
-                        <Button href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v1.0.0/blindmixer-1.0.0.Setup.exe" color="secondary">Download windows setup</Button> {<br/>}
-                        <a href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v1.0.0/blindmixer-1.0.0.Setup.exe.asc" style={{color: '#fff'}}><FontAwesomeIcon icon={faPaperclip} />Accompanying signature</a>
+                        <Button href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/blindmixer-0.0.1-Setup.exe" color="secondary">Download windows setup</Button> {<br/>}
+                        <a href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/blindmixer-win32-x64.tar.gz" style={{color: '#fff'}}><FontAwesomeIcon icon={faPaperclip} />zipped folder</a>
 
                     </Col>
                     <Col xs="12" sm="4" md="4" lg="4">
@@ -47,15 +47,15 @@ const ReleasesHero = () =>  {
                         <p >Linux (.deb): </p>
                         <p>release: v1.0.0</p>
                     </div>
-                        <Button href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v1.0.0/blindmixer_1.0_amd64.deb" color="secondary">Download Linux setup</Button> {<br/>}
-                        <a href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v1.0.0/blindmixer_1.0_amd64.deb.asc" style={{color: '#fff'}}><FontAwesomeIcon icon={faPaperclip} />Accompanying signature</a>
+                        <Button href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/blindmixer_0.0.1_amd64.deb" color="secondary">Download Linux setup</Button> {<br/>}
+                        <a href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/blindmixer-linux-x64.tar.gz" style={{color: '#fff'}}><FontAwesomeIcon icon={faPaperclip} />zipped folder</a>
                     </Col>
-                    {/* <Col xs="12" sm="4" md="4" lg="4">
+                    <Col xs="12" sm="4" md="4" lg="4">
                     <div className="hero-fourth-text">
-                        <p >SHAsum of both .deb and .exe files: </p>
+                        <p >shasums to verify the authenticity of your download: </p>
                     </div>
-                        <Button href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v0.0.1/blindmixer_0.0.1_SHASUMS256.asc" color="secondary">Download SHASUMS </Button> {<br/>}
-                    </Col> */}
+                        <Button href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/shasums.txt.asc" color="secondary">Download</Button> {<br/>}
+                    </Col>
                 </Row>
             </div>
         </div>
@@ -91,18 +91,18 @@ const HowandWhy = () => {
     <h1>Verify the wallet executables!</h1>
 
     <p>
-        There are two ways you can verify the wallet signatures. First, you'll need to import our signing key, which can be found here. <a href="https://keybase.io/doofenshmirtz/pgp_keys.asc"> 3887 6AFC 1172 E3DF A17A  84BB 2E5F 4A83 BFE8 1B1B</a>
+        There are two ways you can get the keys to verify the wallet signatures. Either import them manually, for which they can be found here. <a href="https://keybase.io/jameslemarkven/pgp_keys.asc"> 1CE3 A7D2 4275 2B94 70F6  585F 9123 3C86 5A2C AC09</a>
     </p>
-<p>Or, you can also import the key using the fingerprint.
+<p>Or, you can also import the key using the fingerprint using the following command:
 </p>
 <Col className="fee-box list-group-item-success" sm={{ size: 12, offset: 3 }}> 
-        <code>gpg --keyserver hpk://keyserver.ubuntu.com --recv-keys 38876AFC1172E3DFA17A84BB2E5F4A83BFE81B1B</code>
+        <code>gpg --keyserver hpk://keyserver.ubuntu.com --recv-keys 1CE3A7D242752B9470F6585F91233C865A2CAC09</code>
          </Col> 
-    <p>
+    {/* <p>
         After that, you can either download the accompanying signature and verify that against your respective redistributable, which should check out.
-    </p>
+    </p> */}
     <p>
-        Alternatively, you can calculate the hash of the redistributable yourself, and compare it against our signed hashes, <a href="https://github.com/blindmixer/blindmixer-wallet-electron/releases/download/v1.0.0/shasums.asc">which can be found here</a>.
+        After that, you can calculate the hash of the redistributable yourself, and compare it against our signed hashes which, again, can be found <a href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/shasums.txt.asc">here</a>
     </p>
     </SectionDiv>)
 }
@@ -112,7 +112,7 @@ const HowandWhy = () => {
 const LatestUrl = () => { 
     
     const [version, setData] = useState(null)
-    const getData = () =>fetch(`https://updates.blindmixer.dev/`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
+    const getData = () =>fetch(`https://updates.blindmixer.com/`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
     
     useEffect(() => {
        getData().then((data) => setData(data))
@@ -135,7 +135,7 @@ const LatestUrl = () => {
         </p>
 
         <p>
-        Make sure to verify the fingerprint matches the one on github. If you're in doubt, contact our support!
+        Make sure to verify that the fingerprint matches the one on github. If you're in doubt, contact our support!
         </p>
 
        {version != null ?  <Col className="fee-box list-group-item-success" sm={{ size: 12, offset: 3 }}> 
