@@ -10,11 +10,16 @@ import { Link } from 'gatsby'
 const Fees = () => {
     // https://bitcoinfees.earn.com/api/v1/fees/recommended
     const [fees, setFees] = useState(undefined)
-    const getData = () => fetch(`https://bitcoinfees.earn.com/api/v1/fees/recommended`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
-    
+    const getData = () => fetch(`https://mainnet.blindmixer.com/fee-rate/6`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
+    const [custom, setCustom] = useState(undefined)
+    const getCustom = () => fetch(`https://mainnet.blindmixer.com/fee-rate/1`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
 
+
+    // ugly
     useEffect(() => {
-        getData().then((data) => setFees(data))
+        getData().then((data) => setFees(data));
+        getCustom().then((data) => setCustom(data));
+
     }, [])
 
     // if (fees === undefined) {
@@ -30,26 +35,26 @@ const Fees = () => {
             <h1>Fees</h1>
             <h2>Withdrawal</h2>
             <p>These fees includes both bitcoin blockchain fees and our commission. The list is updated dynamically, according to current market fees.</p>
-            {fees ? <div> <Row>
+            {fees && custom ? <div> <Row>
                 <Col className="fee-box green-fee"
-                    sm={{ size: 3, offset: 3 }}>Immediate + High priority:
+                    sm={{ size: 3, offset: 3 }}>Immediate + High priority (Custom):
                 </Col>
                 <Col className="fee-box green-fee"
-                    sm="3">{fees.fastestFee * 561} satoshi
+                    sm="3">{Math.round(custom * 561)} satoshi
                 </Col>
             </Row>
             <Row>
                 <Col className="fee-box list-group-item-success"
                     sm={{ size: 3, offset: 3 }}>Immediate + Normal priority:
                 </Col>
-                <Col className="fee-box list-group-item-success" sm="3">{fees.hourFee * 561} satoshi
+                <Col className="fee-box list-group-item-success" sm="3">{Math.round(fees * 561)} satoshi
                 </Col>
             </Row>
             <Row>
                 <Col className="fee-box list-group-item-warning"
                      sm={{ size: 3, offset: 3 }}>Queued (Batch transaction):
                 </Col>
-                <Col className="fee-box list-group-item-warning" sm="3">{fees.hourFee * (31 * 4)} satoshi
+                <Col className="fee-box list-group-item-warning" sm="3">{Math.round(fees * (31 * 4))} satoshi
                 </Col>
             </Row>
             <Row>

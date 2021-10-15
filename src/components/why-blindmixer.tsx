@@ -8,8 +8,8 @@ import { Row, Col } from 'reactstrap';
 
 const Table = () => {
 
-    const [fees, setFees] = useState<undefined | any>(undefined) // poor timing
-    const getData = () => fetch(`https://bitcoinfees.earn.com/api/v1/fees/recommended`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
+    const [fees, setFees] = useState<undefined | number>(undefined) // poor timing
+    const getData = () => fetch(`https://mainnet.blindmixer.com/fee-rate/6`).then((res) => res.status === 200 ? res.json() : null).catch(error => alert(error.message));
     
 
     useEffect(() => {
@@ -35,8 +35,8 @@ const Table = () => {
         </div>
         <div>
             <div>Send fee [eco]</div>
-            <div>{fees.hourFee * (31 * 4)} sat (-{(((fees.hourFee * (561)) - (fees.hourFee * (31 * 4))) / (fees.hourFee * (561)) * 100).toFixed(2)}%){" "} <FontAwesomeIcon icon="check" style={{ color: 'green'}}/></div>
-    <div>{fees.hourFee * (561)} sat {" "}  <FontAwesomeIcon icon="times" style={{ color: 'red'}}/></div>
+            <div>{Math.round(fees * (31 * 4))} sat (-{(((fees * (561)) - (fees * (31 * 4))) / (fees * (561)) * 100).toFixed(2)}%){" "} <FontAwesomeIcon icon="check" style={{ color: 'green'}}/></div>
+    <div>{Math.round(fees * (561))} sat {" "}  <FontAwesomeIcon icon="times" style={{ color: 'red'}}/></div>
         </div>
         <div>
             <div>Send fee [free]</div>
