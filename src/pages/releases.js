@@ -88,12 +88,13 @@ const HowandWhy = () => {
     
     <hr/>
     <br/>
-    <h1>Verify the wallet executables!</h1>
-
+    <h2 id="verify-wallet-exec">Verify Wallet Files
+                        <a href="#verify-wallet-exec" className="anchor-section float-right">#</a>
+                    </h2>
     <p>
-        There are two ways you can get the keys to verify the wallet signatures. Either import them manually, for which they can be found here. <a href="https://keybase.io/jameslemarkven/pgp_keys.asc"> 1CE3 A7D2 4275 2B94 70F6  585F 9123 3C86 5A2C AC09</a>
+        There are two ways you can get the keys to verify the wallet signatures. Either import them manually for which they can be found here. <a href="https://keybase.io/jameslemarkven/pgp_keys.asc"> 1CE3 A7D2 4275 2B94 70F6  585F 9123 3C86 5A2C AC09</a>
     </p>
-<p>Or, you can also import the key using the fingerprint using the following command:
+<p>Or you can also import the key using the fingerprint using the following command:
 </p>
 <Col className="fee-box list-group-item-success" sm={{ size: 12, offset: 3 }}> 
         <code>gpg --keyserver hpk://keyserver.ubuntu.com --recv-keys 1CE3A7D242752B9470F6585F91233C865A2CAC09</code>
@@ -102,7 +103,7 @@ const HowandWhy = () => {
         After that, you can either download the accompanying signature and verify that against your respective redistributable, which should check out.
     </p> */}
     <p>
-        After that, you can calculate the hash of the redistributable yourself, and compare it against our signed hashes which, again, can be found <a href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/shasums.txt.asc">here</a>
+        After that you can calculate the hash of the redistributable yourself and compare it against our signed hashes which can be found <a href="https://github.com/blndmxr/blndmxr-mixer-electron/releases/download/v0.0.1/shasums.txt.asc">here</a>
     </p>
     </SectionDiv>)
 }
@@ -125,13 +126,13 @@ const LatestUrl = () => {
     return (
         <SectionDiv>
          {<br/>}{<hr/>}
-        <h1>Load the latest version URL</h1>
+         <h2 id="load-latest-url">Latest Version Url
+                        <a href="#load-latest-url" className="anchor-section float-right">#</a>
+                    </h2>
         <p>
             You might be wondering: how do I know I am loading the <i>real</i> wallet file?
             We will periodically update the latest version url to appear right below. However, as we have just explained, domain hijackings can happen at random.
-            Therefore, it might be possible that the url linked below is also malicious. <br/>
-            To make sure you're not loading a malicious URL, please either visit our <a href="https://github.com/blindmixer/blindmixer-wallet-dist">github</a> and download the signature from there, or download it down below.
-
+            Therefore, it might be possible that the url linked below is also malicious. Please always verify the integrity before updating!<br/>
         </p>
 
         <p>
@@ -139,12 +140,10 @@ const LatestUrl = () => {
         </p>
 
        {version != null ?  <Col className="fee-box list-group-item-success" sm={{ size: 12, offset: 3 }}> 
-    The version URL has last been changed on <strong>{JSON.stringify(new Date(version.latestDate).toLocaleDateString()).replace(/"/g, '')}</strong> which is <strong>~{JSON.stringify(Math.round((new Date().getTime() - new Date(version.latestDate).getTime()) / (60*60*24*1000)))}</strong>  days ago! For more information
-          please check the{" "}
-          <Link to="/stats">version history</Link>
+    The version URL has last been changed on <strong>{JSON.stringify(new Date(version.latestDate).toLocaleDateString()).replace(/"/g, '')}</strong> which is <strong>~{JSON.stringify(Math.round((new Date().getTime() - new Date(version.latestDate).getTime()) / (60*60*24*1000)))}</strong>  days ago!
          </Col> : undefined}
         <p>
-            The current version URL is as following: (as can be found <a href="https://github.com/blindmixer/blindmixer-wallet-dist/releases/v1.0.0">here</a> on github.)
+            The current version URL is as following:
         </p>
         {version != null ?
         <CopyToClipboard className="btn btn-light" style={{}} text={version.versionScript}>
@@ -152,7 +151,7 @@ const LatestUrl = () => {
          <FontAwesomeIcon icon={faCopy} />
           </CopyToClipboard> : undefined } 
         <p> 
-            For which the signature is as following: (which can be found <a href="https://github.com/blindmixer/blindmixer-wallet-dist/releases/v1.0.0">here</a> on github)
+            For which the signature is as following: 
         </p>
         {version != null ?
        <div> <Col className="fee-box list-group-item-success" sm={{ size: 12, offset: 3 }}> 

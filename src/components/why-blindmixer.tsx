@@ -41,7 +41,7 @@ const Table = () => {
         <div>
             <div>Send fee [free]</div>
     <div>100 sat {" "} <FontAwesomeIcon icon="check" style={{ color: 'green'}}/></div>
-            <div>{1 * (561)} sat {" "} <FontAwesomeIcon icon="times" style={{ color: 'red'}}/></div>
+            <div>{0.25 * (561)} sat {" "} <FontAwesomeIcon icon="times" style={{ color: 'red'}}/></div>
         </div>
         <div>
             <div>Receive fee</div>
@@ -83,7 +83,7 @@ export default function Whyblindmixer() {
         <div className="index-notice">
             <h2>Released!</h2>
             <p>
-                The blindmixer.com software was acquired from moneypot.com and will be used for a new bitcoin mixer! (Note: we are a completely seperate entity!)
+                The blindmixer.com software was acquired from moneypot.com and will be used for a new bitcoin mixer!
             </p>
         </div>
         <h2>Why blindmixer?</h2>

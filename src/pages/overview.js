@@ -38,7 +38,7 @@ const LoadCoins = () => {
                 </tr>
             </thead>
             <tbody>
-               {coins.blindCoinKeys.map( (key, index) => {
+               {coins.blindCoinKeys[0].map( (key, index) => {
                    return (
                     <tr key={key}>
                         <th>

@@ -32,8 +32,8 @@ const IndexPage = () => {
                     <p>Trade with other individuals within blindmixer or externally. Fast and with very low fees. Internal transfers are free!</p>
                 </Col>
                 <Col >
-                    <h3>Store and reap the rewards!</h3>
-                    <p>Use the blindmixer wallet as a hub to buy everyday products against very low fees!</p>
+                    <h3>Privacy and ease of use</h3>
+                    <p>Use the blindmixer wallet as a hub to buy everyday products against very low fees with great comfort.</p>
                 </Col>
                 <Col>
                     <h3>E-commerce</h3>
